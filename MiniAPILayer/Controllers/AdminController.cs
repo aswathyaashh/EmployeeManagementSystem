@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ModelLayer;
 using RepositoryLayer;
-
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -23,6 +22,8 @@ namespace MiniAPILayer.Controllers
             _dataContext = dContext;
             _config = config;
         }
+
+
         public static AdminVerify user = new AdminVerify();
         [HttpPost]
         [Route("Register")]
@@ -52,6 +53,8 @@ namespace MiniAPILayer.Controllers
 
         }
 
+
+
         [HttpPost("login")]
         public async Task<IActionResult> Login(Login request1)
         {
@@ -74,6 +77,8 @@ namespace MiniAPILayer.Controllers
 
 
         }
+
+
 
         private string CreateToken(AdminVerify user)
         {
@@ -110,6 +115,8 @@ namespace MiniAPILayer.Controllers
                     ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
+
+
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {

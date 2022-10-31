@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
 namespace Mini_Project_Sample.Models
@@ -6,49 +8,92 @@ namespace Mini_Project_Sample.Models
     public class TempClass
     {
 
-        [Required]
-        [Display(Name = "Title")]
+        [Required(ErrorMessage = "Please select the Title")]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(5)]
         public string? Title { get; set; }
-        [Required(ErrorMessage = "Please enter First Name"), MaxLength(20)]
+
+
+        [Required(ErrorMessage = "Please enter your First Name"), MaxLength(20)]
+        [RegularExpression("^[A-Za-z]+$")]
+        [Column(TypeName = "VARCHAR")]
         [Display(Name = "First Name")]
         public string? FirstName { get; set; }
-        [Required(ErrorMessage = "Please enter Last Name"), MaxLength(20)]
+
+
+        [Required(ErrorMessage = "Please enter your Last Name"), MaxLength(20)]
+        [RegularExpression("^[A-Za-z]+$")]
+        [Column(TypeName = "VARCHAR")]
         [Display(Name = "Last Name")]
         public string? LastName { get; set; }
-        [Required]
-        [Display(Name = "Gender")]
+
+
+        [Required(ErrorMessage = "Please select Gender")]
+        [StringLength(50)]
+        [Column(TypeName = "VARCHAR")]
         public string? Gender { get; set; }
-       
-        [Required(ErrorMessage = "Please enter User Name")]
+
+
+        [Key]
+        [Required(ErrorMessage = "User Name is required")]
+        [RegularExpression("^[A-Za-z]+$")]
+        [Column(TypeName = "VARCHAR")]
         [Display(Name = "User Name")]
         public string? UserName { get; set; }
-        [Required(ErrorMessage = "Please enter Password"), MinLength(10)]
+
+
+        [Required(ErrorMessage = "Password is required"), MinLength(10)]
         [DataType(DataType.Password)]
+        [Column(TypeName = "VARCHAR")]
         [Display(Name = "Password")]
         public string? Password { get; set; }
+
+
         [Compare("Password")]
+        [Required(ErrorMessage = "Confirm Password is required"), MinLength(10)]
         [Display(Name = "Confirm Password")]
+        [Column(TypeName = "VARCHAR")]
         [DataType(DataType.Password)]
         public string? ConfirmPassword { get; set; }
+
+
         [Display(Name = "Email Id")]
-
-        //[RegularExpression(@"^\w+([-+.']\w+)@\w+([-.]\w+)\.\w+([-.]\w+)*$", ErrorMessage = "Email is not valid")]
+        [RegularExpression(@"^\w+(@gmail\.com)$")]
+        [Column(TypeName = "VARCHAR")]
         public string? EmailId { get; set; }
-        [Display(Name = "Mobile number")]
 
+
+        [Display(Name = "Mobile number")]
+        [RegularExpression("^[0-9]{10}$")]
+        [StringLength(10)]
         public string? Mobile { get; set; }
-        [Required]
+
+
+        [Required(ErrorMessage = "Please enter your Address")]
         [Display(Name = "Address")]
+        [StringLength(50)]
         public string? Address { get; set; }
-        [Required]
+
+
+        [Required(ErrorMessage = "Please select your country")]
         [Display(Name = "Country")]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(60)]
         public string? Country { get; set; }
-        [Required]
+
+
+        [Required(ErrorMessage = "Please enter your salary")]
         [Display(Name = "Salary")]
+        [Range(10000, 2500000)]
         public int Salary { get; set; }
-        [Required]
-        [Display(Name = "Designation")]
+
+
+        [Required(ErrorMessage = "Please enter your designation")]
+        [StringLength(30)]
+        [Column(TypeName = "VARCHAR")]
         public string? Designation { get; set; }
+
+
         [Display(Name = "Upload image")]
         public string? UploadImage { get; set; }
     }

@@ -25,6 +25,8 @@ namespace Mini_Project_Sample.Controllers
 
         }
 
+
+
         public async Task<IActionResult> Post()
         {
             var client = new HttpClient();
@@ -41,9 +43,10 @@ namespace Mini_Project_Sample.Controllers
             }
             return View();
         }
+
+
+
         [HttpPost]
-
-
         public IActionResult Post(EmployeeDetailsMvc modelobj)
         {
             var client = new HttpClient();
@@ -57,6 +60,9 @@ namespace Mini_Project_Sample.Controllers
             }
             return View();
         }
+
+
+
         public async Task<IActionResult> Delete(string UserName)
         {
             var client = new HttpClient();
@@ -65,6 +71,9 @@ namespace Mini_Project_Sample.Controllers
             return RedirectToAction("ViewEmployee");
 
         }
+
+
+
         [HttpGet]
         public async Task<IActionResult> Edit(string username)
         {
@@ -93,6 +102,7 @@ namespace Mini_Project_Sample.Controllers
         }
 
 
+
         [HttpPost]
         public async Task<IActionResult> Edit(TempClass temp1)
         {
@@ -117,10 +127,14 @@ namespace Mini_Project_Sample.Controllers
             }
             return View();
         }
+
+
         public ActionResult Designation()
         {
             return View();
         }
+
+
         [HttpPost]
         public async Task<IActionResult> Designation(DesignationMvc designationClass)
         {
@@ -135,10 +149,14 @@ namespace Mini_Project_Sample.Controllers
             }
             return View();
         }
+
+
         public IActionResult Login()
         {
             return View();
         }
+
+
 
         [HttpPost]
         public IActionResult Login(AdminMvc loginDetails)
@@ -154,10 +172,14 @@ namespace Mini_Project_Sample.Controllers
             }
             return RedirectToAction("DashBoard");
         }
+
+
         public ActionResult Register()
         {
             return View();
         }
+
+
         [HttpPost]
         public IActionResult Register(AdminMvc user2)
         {
@@ -172,10 +194,14 @@ namespace Mini_Project_Sample.Controllers
             }
             return View();
         }
+
+
         public ActionResult DashBoard()
         {
             return View();
         }
+
+
         public ActionResult LogOut()
         {
 

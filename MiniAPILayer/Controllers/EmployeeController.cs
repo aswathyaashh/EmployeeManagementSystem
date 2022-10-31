@@ -16,6 +16,8 @@ namespace MiniAPILayer.Controllers
         {
             _employee = employee;
         }
+
+
         [HttpGet]
         [Route("get")]
       //  [Authorize]
@@ -23,12 +25,16 @@ namespace MiniAPILayer.Controllers
         {
             return _employee.Get();
         }
+
+
         [HttpGet]
         [Route("get/{username}")]
         public ActionResult<EmployeeDetails> Get(string username)
         {
             return _employee.Get(username);
         }
+
+
         [HttpPost("post")]
         public IActionResult Post([FromBody] EmployeeDetails emp)
         {
@@ -37,6 +43,8 @@ namespace MiniAPILayer.Controllers
             _employee.Post(emp);
             return Ok();
         }
+
+
         [HttpDelete]
         [Route("delete/{UserName}")]
         public ActionResult Delete(string UserName)
@@ -44,6 +52,8 @@ namespace MiniAPILayer.Controllers
             _employee.Delete(UserName);
             return Ok();
         }
+
+
         [HttpPost]
         [Route("Edit")]
         public IActionResult Edit([FromBody] EmployeeDetails emp)

@@ -16,6 +16,8 @@ namespace MiniAPILayer.Controllers
             _dbContext1 = dbcontext1;
         }
 
+
+
         [HttpPost]
         [Route("designation")]
         public IActionResult Designation([FromBody] Designation designa)
@@ -26,6 +28,7 @@ namespace MiniAPILayer.Controllers
             _dbContext1.SaveChanges();
             return Ok();
         }
+
 
 
         [HttpGet]
